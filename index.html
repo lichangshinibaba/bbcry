@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>喜欢小猪宝宝 · 帽子云</title>
+  <style>
+    /* 全局重置与字体 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fdeff2 0%, #fff5f7 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* 背景小装饰：飘浮的软云 */
+    body::before {
+      content: "☁️☁️☁️";
+      position: absolute;
+      top: 10%;
+      left: -20px;
+      font-size: 8rem;
+      opacity: 0.2;
+      white-space: nowrap;
+      transform: rotate(-5deg);
+      pointer-events: none;
+    }
+
+    body::after {
+      content: "☁️☁️☁️";
+      position: absolute;
+      bottom: 5%;
+      right: -30px;
+      font-size: 10rem;
+      opacity: 0.15;
+      white-space: nowrap;
+      transform: rotate(8deg);
+      pointer-events: none;
+    }
+
+    /* 主卡片 —— 帽子云风格容器 */
+    .hat-cloud {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 200px 200px 120px 120px / 160px 160px 100px 100px;
+      padding: 3rem 5rem;
+      box-shadow: 
+        0 30px 40px -20px rgba(255, 140, 170, 0.4),
+        0 0 0 2px rgba(255, 255, 255, 0.7) inset,
+        0 15px 30px -10px rgba(0, 0, 0, 0.05);
+      max-width: 1000px;
+      width: fit-content;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      border-top-left-radius: 180px;
+      border-top-right-radius: 180px;
+      transition: all 0.2s ease;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .hat-cloud::before,
+    .hat-cloud::after {
+      content: "";
+      position: absolute;
+      top: -30px;
+      width: 120px;
+      height: 100px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 50%;
+      z-index: -1;
+      box-shadow: 0 10px 20px -5px rgba(255, 140, 170, 0.3);
+    }
+
+    .hat-cloud::before {
+      left: -40px;
+      transform: rotate(-15deg);
+    }
+
+    .hat-cloud::after {
+      right: -40px;
+      transform: rotate(15deg);
+    }
+
+    /* 大标题 */
+    .big-title {
+      font-size: 5rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      line-height: 1.3;
+      color: #ff6f91;
+      text-shadow: 
+        0 2px 0 #ffe2e9,
+        0 4px 10px rgba(255, 111, 145, 0.4),
+        0 8px 20px rgba(255, 160, 180, 0.3);
+      margin-bottom: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: baseline;
+      gap: 0.1em 0.2em;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 8px 6px rgba(255, 150, 170, 0.2));
+    }
+
+    .big-title span {
+      display: inline-block;
+      transition: all 0.2s;
+      transform-origin: bottom;
+    }
+
+    .big-title span:hover {
+      transform: translateY(-6px) scale(1.05);
+      color: #ff8aa8;
+      text-shadow: 0 6px 18px #ffb6c1;
+    }
+
+    /* 副标题 */
+    .sub-message {
+      margin-top: 1.5rem;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: #b35f7a;
+      letter-spacing: 0.2em;
+      opacity: 0.85;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .sub-message .pig-emoji {
+      font-size: 2.2rem;
+      display: inline-block;
+      animation: bounce 2s infinite;
+    }
+
+    /* 云朵小尾巴 */
+    .cloud-tail {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+      opacity: 0.6;
+      font-size: 2.8rem;
+      letter-spacing: 12px;
+      color: #ffb3c6;
+    }
+
+    /* 动画定义 */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* 响应式适配 */
+    @media (max-width: 768px) {
+      .hat-cloud {
+        padding: 2rem 2rem;
+        border-radius: 120px 120px 80px 80px / 100px 100px 70px 70px;
+      }
+
+      .hat-cloud::before,
+      .hat-cloud::after {
+        width: 80px;
+        height: 70px;
+        top: -15px;
+      }
+
+      .hat-cloud::before { left: -20px; }
+      .hat-cloud::after { right: -20px; }
+
+      .big-title {
+        font-size: 3.2rem;
+        gap: 0.05em;
+      }
+
+      .sub-message {
+        font-size: 1.2rem;
+        letter-spacing: 0.1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 这里是页面的核心内容 -->
+  <div class="hat-cloud">
+    <h1 class="big-title">
+      <span>喜</span><span>欢</span><span>小</span><span>猪</span><span>宝</span><span>宝</span>
+    </h1>
+    <div class="sub-message"
